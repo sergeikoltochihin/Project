@@ -1,0 +1,31 @@
+---
+- name: Nginx install packages
+  apt:
+    name: "{{ apt_nginx_packages }}"
+    state: present
+
+- name: start nginx
+  service:
+    name: nginx
+    state: started
+    enabled: yes
+
+- name: Templates
+  template:
+    src: "hosts.j2"
+    dest: "/etc/hosts"
+    backup: yes
+
+- name: Remove first page
+  file:
+    path: "{{ default_config }}/default"
+    state: absent
+
+- name: Copy custom page
+  copy:
+    src: default
+    dest: "{{ default_config }}"
+  notify:
+    - restart nginx
+
+- meta: flush_handlers
