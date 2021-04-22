@@ -1,4 +1,9 @@
 ---
+- name: Remove content and directory
+  file:
+    path: /home/vagrant/prod/03.npm_Deploy/
+    state: absent
+
 - name: create directory
   file:
     path: /home/vagrant/prod/03.npm_Deploy
