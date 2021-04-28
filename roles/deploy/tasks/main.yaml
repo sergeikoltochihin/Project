@@ -1,21 +1,21 @@
 ---
 - name: Remove content and directory
   file:
-    path: /home/vagrant/prod/03.npm_Deploy/
+    path: /home/vagrant/prod/deploy/
     state: absent
 
 - name: create directory
   file:
-    path: /home/vagrant/prod/03.npm_Deploy
+    path: /home/vagrant/prod/deploy
     state: directory
     recurse: yes
 
 - name: clone repo
   git:
     repo: https://github.com/sergeikoltochihin/TODOApp.git
-    dest: /home/vagrant/prod/03.npm_Deploy
+    dest: /home/vagrant/prod/deploy
     version: master
 
 - name: Install packages from json
   npm:
-    path: /home/vagrant/prod/03.npm_Deploy
+    path: /home/vagrant/prod/deploy

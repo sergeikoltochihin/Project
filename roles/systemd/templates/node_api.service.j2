@@ -5,8 +5,8 @@ After=network.target
 [Service]
 Environment=NODE_PORT=4201
 User=vagrant
-WorkingDirectory=/home/vagrant/prod/03.npm_Deploy
-ExecStart=/usr/bin/node /home/vagrant/prod/03.npm_Deploy/server.js
+WorkingDirectory=/home/vagrant/prod/deploy
+ExecStart=/usr/bin/node /home/vagrant/prod/deploy/server.js
 Restart=on-failure
 
 [Install]
